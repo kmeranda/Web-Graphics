@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>Kelsey's Orrery</title>
+<script id="vertex-shader" type="x-shader/x-vertex">
+    
+attribute vec3 vPosition;
+uniform mat4 mvpMatrix;
+
+void
+main()
+{
+    gl_Position = mvpMatrix * vec4(vPosition, 1.0);
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+uniform vec3 vColor;
+
+void
+main()
+{
+    gl_FragColor = vec4( vColor, 1.0 );
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="orrery-3d-template.js"></script>
+</head>
+
+<body>
+<canvas id="gl-canvas" width="512" height="512">
+Oops ... your browser doesn't support the HTML5 canvas element
+</canvas>
+<br>
+<button onclick="incDPF()">Inc DPF</button>
+<button onclick="decDPF()">Dec DPF</button>
+
+<form id="orbit">
+	<input type="radio" name="orbit" id="orbiton" checked>Orbit On
+	<input type="radio" name="orbit" id="orbitoff">Orbit Off
+</form>
+
+<form id="day">
+	<input type="radio" name="day" id="dayon" checked>Day On
+	<input type="radio" name="day" id="dayoff">Day Off
+</form>
+
+<form id="animation">
+	<input type="radio" name="animation" id="animateon" checked>Animation On
+	<input type="radio" name="animation" id="animateoff">Animation Off
+</form>
+
+<p id="dayCount"></p>
+
+</body>
+</html>
