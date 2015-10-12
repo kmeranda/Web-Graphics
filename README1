@@ -1,8 +1,0 @@
-Kelsey Meranda
-CSE 4
-Assignment 1
-
-I drew the ball with 12 triangles in a triangle fan, and the paddle with 2 triangles in a triangle strip. All of the initial values of the vertices for these shapes were stored in an array of vec2s called vertices with one vertex buffer object called bufferId. The x and y velocities are generated randomly using the Math.random() function. The current offset of the ball from its initial position is stored in ballx and bally, which are incremented each time it runs the render function in the js file, and the current offset of the paddle from its initial position is stored in paddlex, which is incremented when the left and right buttons are clicked. These offsets are loaded into a vec2 offset variable, which is passed using the uniform2fv() function to the HTML file to update the postition. This offset is first set to ball's offsets, then the ball is drawn, then the offset is set to the paddle's offsets, then the paddle is drawn. In order to determine whether the game has ended and to increment the bounce count, the ball's and paddles's position are checked in if statements in the render function in the js file.
-
-My html file is called HW1_KM.html and my js file is called HW1_KM.js. These rely on the files within the Common folder.
-
