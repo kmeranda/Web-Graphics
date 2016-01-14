@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<title>B-Spline</title>
+
+<script id="vertex-shader" type="x-shader/x-vertex">
+attribute vec4 vPosition;
+uniform int cindex;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_PointSize = 10.0;
+    gl_Position = vPosition;
+    if(cindex == 0)
+	fColor = vec4(0.4,0.6,1.0,1.0);
+    else if(cindex == 1)
+	fColor = vec4(0.0,0.0,0.0,1.0);
+    else if(cindex == 2)
+	fColor = vec4(0.7,0.7,0.7,1.0);
+}
+</script>
+
+<script id="fragment-shader" type="x-shader/x-fragment">
+precision mediump float;
+varying vec4 fColor;
+
+void
+main()
+{
+    gl_FragColor = fColor;
+}
+</script>
+
+<script type="text/javascript" src="../Common/webgl-utils.js"></script>
+<script type="text/javascript" src="../Common/initShaders.js"></script>
+<script type="text/javascript" src="../Common/MV.js"></script>
+<script type="text/javascript" src="bsplineCurve.js"></script>
+</head>
+
+<body>
+ <canvas id="gl-canvas" width="640" height="640">
+Oops ... your browser doesn't support the HTML5 canvas element
+ </canvas>
+ <form>
+   <input type="radio" name="function" id="add" value="add control vertex" checked>add control vertex
+   <input type="radio" name="function" id="drag" value="drag control vertex">drag control vertex
+ </form>
+</body>
+</html>
